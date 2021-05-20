@@ -1,16 +1,16 @@
 import React from "react";
 
-const AdTextArea = ({ message, setMessage, sendMessage }) => {
+const AtmTextArea = ({ message, setMessage, sendMessage }) => {
   const handleInput = (e) => {
     setMessage(e.target.value);
   };
 
-  const handleEnter = event => {
-    if(event.charCode === 13 && !event.shiftKey) {
-      event.preventDefault()
-      sendMessage()
+  const handleEnter = (event) => {
+    if (event.charCode === 13 && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage();
     }
-  }
+  };
   return (
     <div>
       {" "}
@@ -25,4 +25,4 @@ const AdTextArea = ({ message, setMessage, sendMessage }) => {
   );
 };
 
-export default AdTextArea;
+export default AtmTextArea;
