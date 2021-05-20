@@ -15,8 +15,8 @@ const OrgMessagesWrapper = ({ btnName }) => {
           setMessageArr={setMessageArr}
         />
       </div>
-      {messageArr.map((message) => {
-        return <AtmMessageBox message={message} />;
+      {messageArr.map((message, index) => {
+        return <AtmMessageBox key={`msg-${index}`} message={message} />;
       })}
     </div>
   );
