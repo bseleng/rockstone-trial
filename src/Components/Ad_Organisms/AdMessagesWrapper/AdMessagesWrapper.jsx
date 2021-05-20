@@ -3,6 +3,9 @@ import AdMessageInput from "../../Ad_Molecules/AdMessageInput/AdMessageInput";
 
 const AdMessagesWrapper = ({ btnName }) => {
   const [messageArr, setMessageArr] = useState([]);
+
+
+
   return (
     <div>
       <AdMessageInput
@@ -11,7 +14,7 @@ const AdMessagesWrapper = ({ btnName }) => {
         setMessageArr={setMessageArr}
       />
       {messageArr.map((message) => {
-        return <div> {message} </div>;
+        return <div > {message} </div>;
       })}
     </div>
   );

@@ -20,7 +20,7 @@ const AdMessageInput = ({ btnName, messageArr, setMessageArr }) => {
 
   return (
     <div className={classes.AdMessageInput}>
-      <AdTextArea message={message} setMessage={setMessage} />
+      <AdTextArea message={message} setMessage={setMessage} sendMessage={sendMessage} />
       <AdButton name={btnName} message={message} onCllick={sendMessage} />
     </div>
   );
