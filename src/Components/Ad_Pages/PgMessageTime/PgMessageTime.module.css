@@ -1,1 +1,1 @@
-.Base {    padding: 15px;    min-height: 100vh;    /*color: "#fff";*/}
+.Container {}.Base {    padding: 15px;    height: 100vh;    overflow:scroll;    /*color: "#fff";*/}.Messages {    background-color: crimson;}.Time {    /*margin-top: 50rem;*/    /*height: 100vh;*/    font-size: 40px;    background-color: cadetblue;}
