@@ -1,6 +1,6 @@
 import React, {useRef, useState} from "react";
 
-const AdClock = () => {
+const AtmClock = () => {
   const dateNow = new Date()
 
   const timeRef = useRef(null)
@@ -40,4 +40,4 @@ const AdClock = () => {
     </>
   )
 }
-export default AdClock
+export default AtmClock

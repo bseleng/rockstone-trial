@@ -1,12 +1,13 @@
 import "./App.css";
-import AdMessagesWrapper from "./Components/Ad_Organisms/AdMessagesWrapper/AdMessagesWrapper";
-import AdClock from "./Components/Ad_Atoms/AdClock/AdClock";
+import OrgMessagesWrapper from "./Components/Ad_Organisms/OrgMessagesWrapper/OrgMessagesWrapper";
+import AdClock from "./Components/Ad_Atoms/AtmClock/AtmClock";
+import SwipableViews from "./Components/__demos/SwipableVIews/SwipableViews";
+import PgMessageTime from "./Components/Ad_Pages/PgMessageTime/PgMessageTime";
 
 function App() {
   return (
     <div className="App">
-      <AdClock/>
-      <AdMessagesWrapper btnName={"Отправить"} />
+      <PgMessageTime />
     </div>
   );
 }
