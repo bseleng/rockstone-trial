@@ -1,65 +1,92 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import OrgMessagesWrapper from "../../Ad_Organisms/OrgMessagesWrapper/OrgMessagesWrapper";
 import classes from "./PgMessageTime.module.css";
 import SwipeableViews from "react-swipeable-views";
 import AtmClock from "../../Ad_Atoms/AtmClock/AtmClock";
 
 const PgMessageTime = () => {
-  const messageRef = useRef(0)
-  const timeRef = useRef(0)
-  const testRef = useRef(0)
-  const [yOffset, setYOffset] =  useState(0)
-  const getYOffset = () => {
-    console.log('🐞 messages', messageRef.current.scrollTop)
-  }
+  const messageRef = useRef(0);
+  const timeRef = useRef(0);
+  const testRef = useRef(0);
 
+  const [offsetY, setOffsetY] = useState({
+    0: messageRef.current,
+    1: timeRef.current,
+    2: testRef.current,
+  });
 
-  const getYOffset2 = () => {
-    console.log('🐞 time 2', testRef.current.scrollTop)
-  }
+  const getOffsetY = (index) => {
+    switch (index) {
+      case "0":
+        setOffsetY((offsetY) => ({
+          ...offsetY,
+          ["0"]: messageRef.current.scrollTop,
+        }));
+        break;
+      case "1":
+        setOffsetY((offsetY) => ({
+          ...offsetY,
+          ["1"]: timeRef.current.scrollTop,
+        }));
+        break;
+      case "2":
+        setOffsetY((offsetY) => ({
+          ...offsetY,
+          ["2"]: testRef.current.scrollTop,
+        }));
+        break;
+      default:
+        return;
+    }
+  };
+
+  const testChange = (index, indexLatest) => {
+    switch (index) {
+      case 0:
+        messageRef.current.scrollTop = offsetY["0"];
+        break;
+      case 1:
+        timeRef.current.scrollTop = offsetY["1"];
+        break;
+      case 2:
+        testRef.current.scrollTop = offsetY["2"];
+        break;
+      default:
+        return;
+    }
+  };
 
   return (
     <div className={classes.Container}>
-      <SwipeableViews >
-        <div className={`${classes.Base} ${classes.Messages}`}  ref={messageRef} onScroll={getYOffset}>
+      <SwipeableViews
+        enableMouseEvents={true}
+        onChangeIndex={(index, indexLatest) => testChange(index, indexLatest)}
+      >
+        <div
+          className={`${classes.Base} ${classes.Messages}`}
+          ref={messageRef}
+          onScroll={() => getOffsetY("0")}
+        >
           <OrgMessagesWrapper btnName={"Отправить"} />
         </div>
-        <div className={`${classes.Base}`} ref={timeRef}>
+        <div
+          className={`${classes.Base}`}
+          ref={timeRef}
+          onScroll={() => getOffsetY("1")}
+        >
           Текущее время
-          <AtmClock/>
+          <AtmClock />
         </div>
-        <div className={`${classes.Base} ${classes.Time}`} ref={testRef} onScroll={getYOffset2}>
-          Текущее время 2
-          <AtmClock/>
-          Текущее время 3
-          <AtmClock/>
-          Текущее время 3
-          <AtmClock/>
-          Текущее время 3
-          <AtmClock/>
-          Текущее время 4
-          <AtmClock/>
-          Текущее время 5
-          <AtmClock/>
-          Текущее время 6
-          <AtmClock/>
-          Текущее время 7
-          <AtmClock/>
-          Текущее время 8
-          <AtmClock/>
-          Текущее время 9
-          <AtmClock/>
-          Текущее время 10
-          <AtmClock/>
-          Текущее время 11
-          <AtmClock/>
-          Текущее время 12
-          <AtmClock/>
+        <div
+          className={`${classes.Base} ${classes.Time}`}
+          ref={testRef}
+          onScroll={() => getOffsetY("2")}
+        >
+          <OrgMessagesWrapper btnName={"Отправить2"} />
         </div>
       </SwipeableViews>
-
     </div>
-  )
+  );
 };
 
 export default PgMessageTime;
