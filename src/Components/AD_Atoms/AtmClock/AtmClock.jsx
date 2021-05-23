@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const AtmClock = ({ setTimestamp }) => {
+const AtmClock = () => {
   const dateNow = new Date();
 
   const timeRef = useRef(null);
@@ -24,7 +24,7 @@ const AtmClock = ({ setTimestamp }) => {
 
   timeRef.current = getCurrentTime();
   setInterval(() => {
-    setTime((seconds) => timeRef.current);
+    setTime(timeRef.current);
   }, 1000);
 
   if (!time) {

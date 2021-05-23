@@ -3,7 +3,7 @@ import classes from "./OrgMessageWrapper.module.css";
 import MclMessageInput from "../../Ad_Molecules/MclMessageInput/MclMessageInput";
 import AtmMessageBox from "../../Ad_Atoms/AtmMessageBox/AtmMessageBox";
 
-const OrgMessagesWrapper = ({ btnName, timestamp }) => {
+const OrgMessagesWrapper = ({ btnName }) => {
   const [messageArr, setMessageArr] = useState([]);
 
   return (
@@ -18,13 +18,7 @@ const OrgMessagesWrapper = ({ btnName, timestamp }) => {
         </div>
       </div>
       {messageArr.map((message, index) => {
-        return (
-          <AtmMessageBox
-            key={`msg-${index}`}
-            message={message}
-            timestamp={timestamp}
-          />
-        );
+        return <AtmMessageBox key={`msg-${index}`} message={message} />;
       })}
     </div>
   );
