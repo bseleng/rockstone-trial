@@ -1,1 +1,1 @@
-.OrgMessageWrapper {}.MessageInput{    position: sticky;    width: 100%;    background-color: rebeccapurple;}
+.OrgMessageWrapper {    display: block;}.MessageInput{    width: 100%;}.InputBar {    height: 5rem;}

@@ -1,18 +1,17 @@
 .AdMessageInput {
     display: flex;
     height: 3rem;
-    margin-bottom: 2rem;
     position: fixed;
 }
 
 .AdMessageInput textarea {
-    width: 65vw;
-    padding-left: 1rem;
-    padding-top: 1rem;
+    width: 60vw;
+    padding: 1rem;
+
 }
 
 .AdMessageInput button {
-    height: 3.2rem;
+    height: 4.1rem;
     max-width: 5rem;
 
 }

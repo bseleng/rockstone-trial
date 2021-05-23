@@ -9,6 +9,8 @@ const PgMessageTime = () => {
   const timeRef = useRef(0);
   const testRef = useRef(0);
 
+  const [timeStamp, setTimeStamp] = useState(null);
+
   const [offsetY, setOffsetY] = useState({
     0: messageRef.current,
     1: timeRef.current,
@@ -67,7 +69,7 @@ const PgMessageTime = () => {
           ref={messageRef}
           onScroll={() => getOffsetY("0")}
         >
-          <OrgMessagesWrapper btnName={"Отправить"} />
+          <OrgMessagesWrapper btnName={"Отправить"} timestamp={timeStamp} />
         </div>
         <div
           className={`${classes.Base}`}
@@ -75,7 +77,7 @@ const PgMessageTime = () => {
           onScroll={() => getOffsetY("1")}
         >
           Текущее время
-          <AtmClock />
+          <AtmClock setTimestamp={setTimeStamp} />
         </div>
         <div
           className={`${classes.Base} ${classes.Time}`}

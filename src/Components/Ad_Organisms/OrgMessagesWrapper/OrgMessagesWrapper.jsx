@@ -7,13 +7,15 @@ const OrgMessagesWrapper = ({ btnName, timestamp }) => {
   const [messageArr, setMessageArr] = useState([]);
 
   return (
-    <div>
-      <div className={classes.MessageInput}>
-        <MclMessageInput
-          btnName={btnName}
-          messageArr={messageArr}
-          setMessageArr={setMessageArr}
-        />
+    <div className={classes.OrgMessageWrapper}>
+      <div className={classes.InputBar}>
+        <div className={classes.MessageInput}>
+          <MclMessageInput
+            btnName={btnName}
+            messageArr={messageArr}
+            setMessageArr={setMessageArr}
+          />
+        </div>
       </div>
       {messageArr.map((message, index) => {
         return (

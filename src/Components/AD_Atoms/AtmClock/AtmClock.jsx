@@ -1,43 +1,40 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 
-const AtmClock = () => {
-  const dateNow = new Date()
+const AtmClock = ({ setTimestamp }) => {
+  const dateNow = new Date();
 
-  const timeRef = useRef(null)
-  const [time, setTime] = useState(timeRef.current)
+  const timeRef = useRef(null);
+  const [time, setTime] = useState(timeRef.current);
 
-
-  const addForwardZero = timeSegment => {
-    return timeSegment.toString().padStart(2,'0')
-  }
+  const addForwardZero = (timeSegment) => {
+    return timeSegment.toString().padStart(2, "0");
+  };
   const getSeconds = () => {
-    return addForwardZero(dateNow.getSeconds())
-  }
+    return addForwardZero(dateNow.getSeconds());
+  };
   const getMinutes = () => {
-    return addForwardZero(dateNow.getMinutes())
-  }
+    return addForwardZero(dateNow.getMinutes());
+  };
   const getHours = () => {
-    return addForwardZero(dateNow.getHours())
-  }
+    return addForwardZero(dateNow.getHours());
+  };
   const getCurrentTime = () => {
-    return `${getHours()} : ${getMinutes()} : ${getSeconds()}`
-  }
+    return `${getHours()} : ${getMinutes()} : ${getSeconds()}`;
+  };
 
-
-  timeRef.current = getCurrentTime()
+  timeRef.current = getCurrentTime();
   setInterval(() => {
-    setTime(seconds=> timeRef.current)
-  }, 1000)
+    setTime((seconds) => timeRef.current);
+  }, 1000);
 
-  if(!time) {
-    return null
+  if (!time) {
+    return null;
   }
 
   return (
     <>
-    <div> {time}</div>
-
+      <div> {time}</div>
     </>
-  )
-}
-export default AtmClock
+  );
+};
+export default AtmClock;
