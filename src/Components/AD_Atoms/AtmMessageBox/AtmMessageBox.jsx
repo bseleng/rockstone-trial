@@ -1,10 +1,9 @@
 import React from "react";
 import classes from "./AtmMessageBox.module.css";
 
-const AtmMessageBox = ({ message, timestamp }) => {
+const AtmMessageBox = ({ message }) => {
   return (
     <div className={classes.AtmMessageBox}>
-      <div>{timestamp}</div>
       <div>{message}</div>
     </div>
   );
