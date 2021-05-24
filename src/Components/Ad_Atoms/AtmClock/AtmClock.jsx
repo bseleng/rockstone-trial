@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Typewriter from "typewriter-effect";
 
 /**
@@ -12,7 +12,7 @@ const AtmClock = () => {
   const dateNow = new Date();
 
   const timeRef = useRef(null);
-  const [time, setTime] = useState(null);
+  const [time, setTime] = useState(timeRef.current);
 
   /**
    * добавляет 0 слева, если длина строки меньше 2
@@ -55,10 +55,17 @@ const AtmClock = () => {
     return `${getHours()} : ${getMinutes()} : ${getSeconds()}`;
   };
 
-  timeRef.current = getCurrentTime();
-  setInterval(() => {
-    setTime(timeRef.current);
-  }, 1000);
+
+    timeRef.current = getCurrentTime();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime( time => timeRef.current);
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <>
@@ -77,7 +84,7 @@ const AtmClock = () => {
         }}
       />
         :
-          <div> {time}</div>}
+          <div ref={timeRef}> {time}</div>}
 
     </>
   );
