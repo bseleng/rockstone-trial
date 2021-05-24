@@ -7,12 +7,10 @@ import AtmClock from "../../Ad_Atoms/AtmClock/AtmClock";
 const PgMessageTime = () => {
   const messageRef = useRef(0);
   const timeRef = useRef(0);
-  const testRef = useRef(0);
 
   const [offsetY, setOffsetY] = useState({
     0: messageRef.current,
     1: timeRef.current,
-    2: testRef.current,
   });
 
   const getOffsetY = (index) => {
@@ -29,12 +27,6 @@ const PgMessageTime = () => {
           ["1"]: timeRef.current.scrollTop,
         }));
         break;
-      case "2":
-        setOffsetY((offsetY) => ({
-          ...offsetY,
-          ["2"]: testRef.current.scrollTop,
-        }));
-        break;
       default:
         return;
     }
@@ -48,16 +40,13 @@ const PgMessageTime = () => {
       case 1:
         timeRef.current.scrollTop = offsetY["1"];
         break;
-      case 2:
-        testRef.current.scrollTop = offsetY["2"];
-        break;
       default:
         return;
     }
   };
 
   return (
-    <div className={classes.Container}>
+    <div>
       <SwipeableViews
         enableMouseEvents={true}
         onChangeIndex={(index, indexLatest) => testChange(index, indexLatest)}
@@ -70,19 +59,12 @@ const PgMessageTime = () => {
           <OrgMessagesWrapper btnName={"Отправить"} />
         </div>
         <div
-          className={`${classes.Base}`}
+          className={`${classes.Base} ${classes.Time}`}
           ref={timeRef}
           onScroll={() => getOffsetY("1")}
         >
           Текущее время
           <AtmClock />
-        </div>
-        <div
-          className={`${classes.Base} ${classes.Time}`}
-          ref={testRef}
-          onScroll={() => getOffsetY("2")}
-        >
-          <OrgMessagesWrapper btnName={"Отправить2"} />
         </div>
       </SwipeableViews>
     </div>
