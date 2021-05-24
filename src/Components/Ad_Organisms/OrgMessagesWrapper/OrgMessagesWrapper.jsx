@@ -3,6 +3,12 @@ import classes from "./OrgMessageWrapper.module.css";
 import MclMessageInput from "../../Ad_Molecules/MclMessageInput/MclMessageInput";
 import AtmMessageBox from "../../Ad_Atoms/AtmMessageBox/AtmMessageBox";
 
+/**
+ * Компонент, который выводит блок ввода сообщения и обрабатывает массив сообщений для вывода
+ * @param {string} btnName - название кнопки
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const OrgMessagesWrapper = ({ btnName }) => {
   const [messageArr, setMessageArr] = useState([]);
 

@@ -4,6 +4,11 @@ import classes from "./PgMessageTime.module.css";
 import SwipeableViews from "react-swipeable-views";
 import AtmClock from "../../Ad_Atoms/AtmClock/AtmClock";
 
+/**
+ * компонент, который отвечает за переключение горизонтальных областей, запоминает их позицию вертикального скролла
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const PgMessageTime = () => {
   const messageRef = useRef(0);
   const timeRef = useRef(0);
@@ -13,6 +18,11 @@ const PgMessageTime = () => {
     1: timeRef.current,
   });
 
+  /**
+   * запоминает вертикальную позицию скролла для каждой области
+   *
+   * @param {string} index - индекс обрабатываемой области видимости ( сокгласно  SwipableViews)
+   */
   const getOffsetY = (index) => {
     switch (index) {
       case "0":
@@ -32,7 +42,11 @@ const PgMessageTime = () => {
     }
   };
 
-  const testChange = (index) => {
+  /**
+   *  устанавливает записанное значение ввертикального скролла для каждой области
+   * @param {number} index - индекс обрабатываемой области видимости ( сокгласно  SwipableViews)
+   */
+  const yScrollChange = (index) => {
     switch (index) {
       case 0:
         messageRef.current.scrollTop = offsetY["0"];
@@ -49,7 +63,7 @@ const PgMessageTime = () => {
     <div>
       <SwipeableViews
         enableMouseEvents={true}
-        onChangeIndex={(index, indexLatest) => testChange(index, indexLatest)}
+        onChangeIndex={(index, indexLatest) => yScrollChange(index, indexLatest)}
       >
         <div
           className={`${classes.Base} ${classes.Messages}`}

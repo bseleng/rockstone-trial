@@ -1,5 +1,14 @@
 import React from "react";
 
+/**
+ * компонент, который записывает сообщение, втом числе на ENTER
+ *
+ * @param {string} message -вводимое сообщение
+ * @param {callback} setMessage - хук для записи сообщения
+ * @param {callback} sendMessage - ф-я для отправки сообщения
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const AtmTextArea = ({ message, setMessage, sendMessage }) => {
   const handleInput = (e) => {
     setMessage(e.target.value);
@@ -16,7 +25,6 @@ const AtmTextArea = ({ message, setMessage, sendMessage }) => {
       {" "}
       <textarea
         onChange={handleInput}
-        // defaultValue={message}
         value={message}
         placeholder={"Введи сообщение"}
         onKeyPress={handleEnter}

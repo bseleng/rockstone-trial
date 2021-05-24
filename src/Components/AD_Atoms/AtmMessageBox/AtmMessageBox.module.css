@@ -1,1 +1,1 @@
-.AtmMessageBox {    /*width: 100wh;*/    display: flex;    border: bisque 2px solid;    border-radius: 5px;    padding: 1rem;    margin-bottom: 1rem;    font-size: 2rem;    color: honeydew;}
+.AtmMessageBox {    display: flex;    border: bisque 2px solid;    border-radius: 5px;    padding: 1rem;    margin-bottom: 1rem;    font-size: 2rem;    color: honeydew;    text-align: left;}
